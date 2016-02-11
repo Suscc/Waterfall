@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #wrap {
+            position: relative;
+            width: 930px;
+            margin: 0 auto;
+        }
+        
+        .box {
+            width: 300px;
+            position: absolute;
+            display: none;
+        }
+        
+        .box div {
+            width: 300px;
+        }
+        
+        .box p {
+            background: #40d0f2;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+    </style>
+    <script src="Jquery.js"></script>
+    <script>
+        $(function () {
+            var aDiv = $('.box');
+            var divHeight = aDiv.eq(0).outerWidth(true);
+            var one = [];
+            var two = [];
+            var three = [];
+            
+            function suan(i, shu, arr) {
+                aDiv.eq(i).css('left', shu);
+                arr.push(aDiv.eq(i).height());
+            };
+            
+            for (var i = 0; i < aDiv.length; i++) {
+                var yu = i % 3;
+                var hang = Math.floor(i / 3);
+                
+                if (yu == 0) {
+                    /*aDiv.eq(i).css('left', 10);
+                    one.push(aDiv.eq(i).height());*/
+                    suan(i, 10, one);
+                } else if (yu == 1) {
+                    /*aDiv.eq(i).css('left', divHeight + 20);
+                    two.push(aDiv.eq(i).height());*/
+                    suan(i, divHeight + 20, two);
+                } else if (yu == 2) {
+                    /*aDiv.eq(i).css('left', divHeight * 2 + 30);
+                    three.push(aDiv.eq(i).height());*/
+                    suan(i, divHeight * 2 + 30, three);
+                };
+                
+                if (hang == 0) {
+                    aDiv.eq(i).css('top', 0);
+                } else {
+                    var plus = 0;
+                    if (yu == 0) {
+                        aDiv.eq(i).css('top', function () {
+                            for (var n = 0; n < hang; n++) {
+                                plus += one[n];
+                            };
+                            plus += n * 10;
+                            return plus;
+                        });
+                    } else if (yu == 1) {
+                        aDiv.eq(i).css('top', function () {
+                            for (var n = 0; n < hang; n++) {
+                                plus += two[n];
+                            };
+                            plus += n * 10;
+                            return plus;
+                        });
+                    } else if (yu == 2) {
+                        aDiv.eq(i).css('top', function () {
+                            for (var n = 0; n < hang; n++) {
+                                plus += three[n];
+                            };
+                            plus += n * 10;
+                            return plus;
+                        });
+                    };
+                };
+//                document.title = yu + ',' + hang;
+//                alert(yu + ',' + hang);
+                aDiv.eq(i).delay(300).show(1000);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box">
+            <div style="height:400px; background:pink;"></div>
+            <p>1111111</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:350px; background:#359ee0;"></div>
+            <p>2222222</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:380px; background:#67f86d;"></div>
+            <p>3333333</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:500px; background:#d695ff;"></div>
+            <p>4444444</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:330px; background:#95f7ff;"></div>
+            <p>5555555</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:420px; background:#d2ff6e;"></div>
+            <p>6666666</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:420px; background:#ffad3d;"></div>
+            <p>7777777</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:510px; background:#ff0808;"></div>
+            <p>8888888</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:340px; background:#0014ff;"></div>
+            <p>9999999</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:330px; background:#95f7ff;"></div>
+            <p>5555555</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:420px; background:#d2ff6e;"></div>
+            <p>6666666</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:350px; background:#359ee0;"></div>
+            <p>2222222</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:420px; background:#ffad3d;"></div>
+            <p>7777777</p>
+        </div>
+        
+        <div class="box">
+            <div style="height:420px; background:#d2ff6e;"></div>
+            <p>6666666</p>
+        </div>
+           
+           <div class="box">
+            <div style="height:420px; background:#d2ff6e;"></div>
+            <p>6666666</p>
+        </div>
+    </div>
+</body>
+</html>
